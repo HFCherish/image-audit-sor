@@ -6,7 +6,7 @@ CREATE TABLE images(
 );
 
 create TABLE approvals(
-  imageid VARCHAR(32),
-  createAt TIMESTAMP(3) NOT NULL,
+  imageid   VARCHAR(32) PRIMARY KEY,
+  create_at BIGINT NOT NULL,
   FOREIGN KEY (imageid) REFERENCES images(id) ON DELETE CASCADE
 );

@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-public class ApiTest {
+public abstract class ApiTest {
     @BeforeClass
     public static void beforeClass() {
         RestAssured.port = 8081;
