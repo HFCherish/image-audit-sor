@@ -1,5 +1,6 @@
 package com.tw.imageaudit.sor.domain;
 
+import com.alibaba.fastjson.JSONObject;
 import com.tw.imageaudit.sor.domain.util.IdGenerator;
 
 /**
@@ -27,5 +28,10 @@ public class Image {
 
     public String getId() {
         return id;
+    }
+
+    public static Image build(JSONObject image) {
+        return new Image(image.getString("data"), image.getString("name"))
+                .setDesc(image.getString("desc"));
     }
 }

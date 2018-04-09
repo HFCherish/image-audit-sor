@@ -31,6 +31,13 @@
             <version>5.1.40</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
+
+
         <!--test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -44,6 +51,14 @@
             <version>3.0.5</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>java-hamcrest</artifactId>
+            <version>2.0.0.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     

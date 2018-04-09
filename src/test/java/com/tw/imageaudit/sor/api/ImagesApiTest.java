@@ -1,11 +1,13 @@
 package com.tw.imageaudit.sor.api;
 
 import com.tw.imageaudit.sor.ApiTest;
-import com.tw.imageaudit.sor.domain.Image;
 import io.restassured.http.ContentType;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.text.MatchesPattern.matchesPattern;
 
 /**
  * @author hf_cherish
@@ -16,13 +18,18 @@ public class ImagesApiTest extends ApiTest{
     public void should_201_save_image_right() {
         given()
                 .contentType(ContentType.JSON)
-                .body(new Image("imagedata", "imagename").setDesc("imagedesc"))
+                .body(new HashMap() {{
+                    put("data", "imagedata");
+                    put("name", "imagename");
+                    put("desc", "imagedesc");
+                }})
 
                 .when()
                 .post(imagesUrl())
 
                 .then()
-                .statusCode(201);
+                .statusCode(201)
+                .header("Location", matchesPattern("^/images/.*$"));
     }
 
     private String imagesUrl() {

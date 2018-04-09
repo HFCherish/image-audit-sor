@@ -1,6 +1,9 @@
 package com.tw.imageaudit.sor.api;
 
+import com.alibaba.fastjson.JSONObject;
 import com.tw.imageaudit.sor.domain.Image;
+import com.tw.imageaudit.sor.domain.ImageRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,8 +17,12 @@ import java.net.URI;
  */
 @RestController("/images")
 public class ImagesApi {
+    @Autowired
+    ImageRepo imageRepo;
+
     @PostMapping
-    public ResponseEntity saveImage(@RequestBody Image image) {
-        return ResponseEntity.created(URI.create("")).build();
+    public ResponseEntity saveImage(@RequestBody JSONObject image) {
+        Image saved = imageRepo.save(Image.build(image));
+        return ResponseEntity.created(URI.create("/images/" + saved.getId())).build();
     }
 }
