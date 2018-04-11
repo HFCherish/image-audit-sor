@@ -1,6 +1,6 @@
-FROM java:8
+FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 ARG JAR_FILE
-ADD ${JAR_FILE} /var/run/app.jar
+ADD target/*.jar /var/run/app.jar
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/var/run/app.jar"]
 EXPOSE 8081
