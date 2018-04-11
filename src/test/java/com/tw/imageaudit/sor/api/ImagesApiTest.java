@@ -56,7 +56,7 @@ public class ImagesApiTest extends ApiTest {
                 .body(new HashMap() {{
                     put("data", "imagedata");
                     put("name", "imagename");
-                    put("desc", "imagedesc");
+                    put("description", "imagedesc");
                 }})
 
                 .when()

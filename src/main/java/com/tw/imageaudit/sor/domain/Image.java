@@ -39,6 +39,6 @@ public class Image {
 
     public static Image build(JSONObject image) {
         return new Image(image.getString("data"), image.getString("name"))
-                .setDescription(image.getString("desc"));
+                .setDescription(image.getString("description"));
     }
 }
